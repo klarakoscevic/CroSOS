@@ -1,4 +1,4 @@
-package hr.vsite.myapplication;
+package hr.vsite.CroSOS;
 
 import org.junit.Test;
 
