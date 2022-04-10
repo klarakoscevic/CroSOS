@@ -20,4 +20,8 @@
     <string name="date_of_birth">Date of birth</string>
     <string name="allergies">Allergies</string>
     <string name="save">Save</string>
+    <string name="none_first_name_msg">Enter first name</string>
+    <string name="none_last_name_msg">Enter last name</string>
+    <string name="failed_create_person_msg">Failed to add {0} {1}</string>
+    <string name="successfully_create_person_msg">Successfully added {0} {1}</string>
 </resources>

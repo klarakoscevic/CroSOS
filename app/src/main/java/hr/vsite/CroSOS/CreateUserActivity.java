@@ -1,5 +1,6 @@
 package hr.vsite.CroSOS;
 
+import hr.vsite.myapplication.*;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
@@ -7,13 +8,16 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -22,6 +26,7 @@ public class CreateUserActivity extends AppCompatActivity {
 
     private Selection selectionBloodType;
     private Selection selectionRhFactor;
+    private Selection selectionGender;
     private DatePickerDialog datePickerDialog;
     private Button btnDateOfBirth;
     private final SimpleDateFormat dateFormatter = new SimpleDateFormat("dd.MM.yyyy");
@@ -35,6 +40,7 @@ public class CreateUserActivity extends AppCompatActivity {
 
         selectionBloodType = new Selection();
         selectionRhFactor = new Selection();
+        selectionGender = new Selection();
         blood_type_array = getResources().getStringArray(R.array.blood_type_array);
         rh_factor_array = getResources().getStringArray(R.array.rh_factor_array);
 
@@ -45,7 +51,8 @@ public class CreateUserActivity extends AppCompatActivity {
 
         rgGender.setOnCheckedChangeListener((group, checkedId) -> {
             int id = group.getCheckedRadioButtonId();
-            RadioButton rb=(RadioButton) findViewById(id);
+            RadioButton rb=findViewById(id);
+            selectionGender.setMySelection(rb.getText().toString());
         });
 
         initDatePicker();
@@ -131,4 +138,41 @@ public class CreateUserActivity extends AppCompatActivity {
         }
     };
     //endregion
+
+    public void SavePerson(View view) {
+        EditText firstName = findViewById(R.id.txtFirstName);
+        EditText lastName = findViewById(R.id.txtLastName);
+        EditText allergies = findViewById(R.id.txtAllergies);
+        EditText medicalConditions = findViewById(R.id.txtMedicalConditions);
+
+        String fName = firstName.getText().toString();
+        String lName = lastName.getText().toString();
+
+        if (fName.matches("")) {
+            Toast.makeText(this, R.string.none_first_name_msg, Toast.LENGTH_SHORT).show();
+            return;
+        } else if (lName.matches("")) {
+            Toast.makeText(this, R.string.none_last_name_msg, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        dbHelper db = new dbHelper(this);
+        long result = db.addPerson(fName,
+                lName,
+                selectionGender.getMySelection(),
+                btnDateOfBirth.getText().toString(),
+                "none",
+                selectionBloodType.getMySelection(),
+                selectionRhFactor.getMySelection(),
+                allergies.getText().toString(),
+                medicalConditions.getText().toString());
+
+        String msg;
+        if (result == -1) {
+            msg = MessageFormat.format(getString(R.string.failed_create_person_msg), fName, lName);
+        } else {
+            msg = MessageFormat.format(getString(R.string.successfully_create_person_msg), fName, lName);
+        }
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
 }

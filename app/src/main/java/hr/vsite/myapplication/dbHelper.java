@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 
 import java.util.Date;
 
-class dbHelper extends SQLiteOpenHelper {
+public class dbHelper extends SQLiteOpenHelper {
 
     private Context context;
     private static final String DATABASE_NAME="CroSOSdb";
@@ -49,7 +49,7 @@ class dbHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    void addPerson(String name, String surname, String gender, String dateOfBirth,String country,String bloodType,String rhFactor, String allergies,String medicalConditions){
+    public long addPerson(String name, String surname, String gender, String dateOfBirth,String country,String bloodType,String rhFactor, String allergies,String medicalConditions){
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues CV= new ContentValues();
 
@@ -63,13 +63,8 @@ class dbHelper extends SQLiteOpenHelper {
         CV.put(PERSON_COLUMN_ALLERGIES,allergies);
         CV.put(PERSON_COLUMN_MEDICAL_CONDITIONS,medicalConditions);
 
-        long result=db.insert(PERSON_TABLE_NAME,null,CV);
-        if (result ==-1){
-            Toast.makeText(context,"Failed to add " + name + " " + surname,Toast.LENGTH_SHORT).show();
-        }
-        else{
-            Toast.makeText(context,"Successfully  added " + name + " " + surname,Toast.LENGTH_SHORT).show();
-        }
+        return db.insert(PERSON_TABLE_NAME,null,CV);
+
     }
 
     Cursor readAllPersonData(){
