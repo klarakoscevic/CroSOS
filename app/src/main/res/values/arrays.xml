@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="blood_type_array">
+        <item>@string/unknown</item>
+        <item>@string/blood_typeA</item>
+        <item>@string/blood_typeB</item>
+        <item>@string/blood_typeAB</item>
+        <item>@string/blood_type0</item>
+    </string-array>
+    <string-array name="rh_factor_array">
+        <item>@string/unknown</item>
+        <item>@string/plus</item>
+        <item>@string/minus</item>
+    </string-array>
+</resources>
