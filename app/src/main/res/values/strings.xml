@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="country">Country</string>
+    <string name="gender">Biological gender</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="blood_type">Blood type</string>
+    <string name="blood_typeA" translatable="false">A</string>
+    <string name="blood_typeB" translatable="false">B</string>
+    <string name="blood_typeAB" translatable="false">AB</string>
+    <string name="blood_type0" translatable="false">0</string>
+    <string name="plus" translatable="false">+</string>
+    <string name="minus" translatable="false">-</string>
+    <string name="unknown">Unknown</string>
+    <string name="rh_factor">Rh-factor</string>
+    <string name="medical_conditions">Medical conditions</string>
+    <string name="medical_conditions_hint">Current medical conditions that emergency services need to know</string>
+    <string name="date_of_birth">Date of birth</string>
+    <string name="allergies">Allergies</string>
+    <string name="save">Save</string>
 </resources>
