@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".EditUserActivity"
+            android:exported="false" />
+        <activity
             android:name=".ShowUsersActivity"
             android:exported="true">
             <intent-filter>
@@ -40,15 +43,18 @@
             android:name=".MapsActivity"
             android:exported="true"
             android:label="@string/title_activity_maps">
-            <!--<intent-filter>
+
+            <!--
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
+            -->
         </activity>
         <activity
             android:name=".CreateUserActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>

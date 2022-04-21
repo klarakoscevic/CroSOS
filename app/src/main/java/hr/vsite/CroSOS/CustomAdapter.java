@@ -1,34 +1,32 @@
 package hr.vsite.CroSOS;
 
-import android.annotation.SuppressLint;
-import android.database.Cursor;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
     private static final String TAG = "CustomAdapter";
 
-    private String[] mDataSet;
+    private final String[] mDataSet;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView textView;
 
         public ViewHolder(View v) {
             super(v);
-            v.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Log.d(TAG, "Element " + getAdapterPosition() + " clicked.");
-                }
+            v.setOnClickListener(v1 -> {
+                Intent intent = new Intent(v1.getContext(), EditUserActivity.class);
+                intent.putExtra("name", getTextView().getText());
+                v1.getContext().startActivity(intent);
             });
-            textView = (TextView) v.findViewById(R.id.txtUser);
+            textView = v.findViewById(R.id.txtUser);
         }
 
         public TextView getTextView() {
@@ -40,6 +38,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         mDataSet = dataSet;
     }
 
+    @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         View v = LayoutInflater.from(viewGroup.getContext())
@@ -50,11 +49,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
-         Log.d(TAG, "Element " + position + " set.");
+        Log.d(TAG, "Element " + position + " set.");
 
-            // Get element from your dataset at this position and replace the contents of the view
-            // with that element
-            viewHolder.getTextView().setText(mDataSet[position]);
+        // Get element from your dataset at this position and replace the contents of the view
+        // with that element
+        viewHolder.getTextView().setText(mDataSet[position]);
     }
     // END_INCLUDE(recyclerViewOnBindViewHolder)
 
