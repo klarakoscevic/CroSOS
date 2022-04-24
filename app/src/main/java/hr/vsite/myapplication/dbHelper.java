@@ -18,7 +18,7 @@ public class dbHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION=1;
 
     private static final String PERSON_TABLE_NAME="person";
-    private static final String PERSON_COLUMN_ID="_id";
+    private static final String PERSON_COLUMN_ID="_id_person";
     private static final String PERSON_COLUMN_NAME="person_name";
     private static final String PERSON_COLUMN_SURNAME="person_surname";
     private static final String PERSON_COLUMN_GENDER="person_gender";
@@ -78,6 +78,17 @@ public class dbHelper extends SQLiteOpenHelper {
         }
         return cursor;
     }
+    public Cursor readPersonDataByID(String row_id){
+        String query= "SELECT * FROM " + PERSON_TABLE_NAME + " WHERE " + PERSON_COLUMN_ID + " = " + row_id;
+        SQLiteDatabase db=this.getReadableDatabase();
+
+        Cursor cursor=null;
+
+        if(db!=null){
+            cursor=db.rawQuery(query,null);
+        }
+        return cursor;
+    }
 
     void updatePersonData(String row_id,String name, String surname, String gender, String dateOfBirth,String country,String bloodType,String rhFactor, String allergies,String medicalConditions){
         SQLiteDatabase db=this.getWritableDatabase();
@@ -99,5 +110,21 @@ public class dbHelper extends SQLiteOpenHelper {
         else {
             Toast.makeText(context,"Update success",Toast.LENGTH_SHORT).show();
         }
+    }
+
+    void deletePersonByID(String row_id){
+        SQLiteDatabase db=this.getWritableDatabase();
+        long result=db.delete(PERSON_TABLE_NAME,"_id_person=?",new String []{row_id});
+        if (result==-1){
+            Toast.makeText(context,"Failed to delete.",Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(context,"Successfully deleted.",Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    void deleteAllPersons(){
+        SQLiteDatabase db=this.getWritableDatabase();
+        db.execSQL("DELETE FROM " + PERSON_TABLE_NAME);
     }
 }
