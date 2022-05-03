@@ -111,7 +111,7 @@ public class dbHelper extends SQLiteOpenHelper {
         return db.delete(PERSON_TABLE_NAME,"_id_person=?",new String []{row_id});
     }
 
-    void deleteAllPersons(){
+    public void deleteAllPersons(){
         SQLiteDatabase db=this.getWritableDatabase();
         db.execSQL("DELETE FROM " + PERSON_TABLE_NAME);
     }
