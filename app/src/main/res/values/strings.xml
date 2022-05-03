@@ -25,6 +25,14 @@
     <string name="failed_create_person_msg">Failed to add {0} {1}</string>
     <string name="successfully_create_person_msg">Successfully added {0} {1}</string>
     <string name="failed_update_person_msg">Failed to update {0} {1}</string>
-    <string name="successfully_update_person_msg">Successfully update {0} {1}</string>
+    <string name="successfully_update_person_msg">Successfully updated {0} {1}</string>
+    <string name="successfully_delete_person_msg">Successfully deleted person</string>
+    <string name="failed_delete_person_msg">Failed to delete person</string>
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="delete">Delete</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="delete_user">Delete user</string>
+    <string name="delete_user_question">Are you sure you want to delete the user?</string>
+    <string name="delete_user_no">User is not deleted</string>
 </resources>

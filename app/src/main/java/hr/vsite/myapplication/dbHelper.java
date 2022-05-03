@@ -106,15 +106,9 @@ public class dbHelper extends SQLiteOpenHelper {
         return db.update(PERSON_TABLE_NAME,cv,"_id_person=?",new String[]{row_id});
     }
 
-    void deletePersonByID(String row_id){
+    public long deletePersonByID(String row_id){
         SQLiteDatabase db=this.getWritableDatabase();
-        long result=db.delete(PERSON_TABLE_NAME,"_id_person=?",new String []{row_id});
-        if (result==-1){
-            Toast.makeText(context,"Failed to delete.",Toast.LENGTH_SHORT).show();
-        }
-        else{
-            Toast.makeText(context,"Successfully deleted.",Toast.LENGTH_SHORT).show();
-        }
+        return db.delete(PERSON_TABLE_NAME,"_id_person=?",new String []{row_id});
     }
 
     void deleteAllPersons(){

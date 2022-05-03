@@ -1,10 +1,15 @@
 package hr.vsite.CroSOS;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -13,6 +18,7 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.MessageFormat;
@@ -184,4 +190,38 @@ public class EditUserActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ShowUsersActivity.class);
         startActivity(intent);
     }
+
+    //region menu
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_edit_user_activity, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.mbtnDelete) {
+            AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+            alertDialog.setTitle(getString(R.string.delete_user));
+            alertDialog.setMessage(getString(R.string.delete_user_question));
+            alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.yes),
+                    (dialogInterface, i) -> deletePerson());
+            alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.no),
+                    (dialogInterface, i) -> Toast.makeText(EditUserActivity.this, getString(R.string.delete_user_no), Toast.LENGTH_SHORT).show());
+            alertDialog.show();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void deletePerson(){
+        long result = db.deletePersonByID(idPerson);
+        if (result == -1) {
+            Toast.makeText(getApplicationContext(), getString(R.string.failed_delete_person_msg), Toast.LENGTH_SHORT).show();
+
+        } else {
+            Toast.makeText(getApplicationContext(), getString(R.string.successfully_delete_person_msg), Toast.LENGTH_SHORT).show();
+        }
+        Intent intent = new Intent(EditUserActivity.this, ShowUsersActivity.class);
+        startActivity(intent);
+    }
+    //endregion
 }
