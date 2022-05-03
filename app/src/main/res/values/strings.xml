@@ -24,5 +24,7 @@
     <string name="none_last_name_msg">Enter last name</string>
     <string name="failed_create_person_msg">Failed to add {0} {1}</string>
     <string name="successfully_create_person_msg">Successfully added {0} {1}</string>
+    <string name="failed_update_person_msg">Failed to update {0} {1}</string>
+    <string name="successfully_update_person_msg">Successfully update {0} {1}</string>
     <string name="title_activity_maps">MapsActivity</string>
 </resources>

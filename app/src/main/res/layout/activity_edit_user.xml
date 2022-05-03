@@ -79,6 +79,7 @@
         android:id="@+id/btnDateOfBirth"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="OpenDatePicker"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
@@ -168,6 +169,7 @@
         android:id="@+id/btnSave"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="SavePerson"
         android:text="@string/save" />
 
     <CalendarView

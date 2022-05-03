@@ -90,7 +90,7 @@ public class dbHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
-    void updatePersonData(String row_id,String name, String surname, String gender, String dateOfBirth,String country,String bloodType,String rhFactor, String allergies,String medicalConditions){
+    public long updatePersonData(String row_id,String name, String surname, String gender, String dateOfBirth,String country,String bloodType,String rhFactor, String allergies,String medicalConditions){
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues cv=new ContentValues();
         cv.put(PERSON_COLUMN_NAME,name);
@@ -103,13 +103,7 @@ public class dbHelper extends SQLiteOpenHelper {
         cv.put(PERSON_COLUMN_ALLERGIES,allergies);
         cv.put(PERSON_COLUMN_MEDICAL_CONDITIONS,medicalConditions);
 
-        long result=db.update(PERSON_TABLE_NAME,cv,"_id=?",new String[]{row_id});
-        if(result==-1){
-            Toast.makeText(context,"Update failed",Toast.LENGTH_SHORT).show();
-        }
-        else {
-            Toast.makeText(context,"Update success",Toast.LENGTH_SHORT).show();
-        }
+        return db.update(PERSON_TABLE_NAME,cv,"_id_person=?",new String[]{row_id});
     }
 
     void deletePersonByID(String row_id){

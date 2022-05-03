@@ -1,5 +1,7 @@
 package hr.vsite.CroSOS;
 
+import static hr.vsite.CroSOS.EditUserActivity.ARG_PERSON_ID;
+
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,21 +12,23 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
     private static final String TAG = "CustomAdapter";
 
-    private final String[] mDataSet;
+    public final String[] mDataSet;
+    public final String[] idDataSet;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView textView;
+        private String id;
 
         public ViewHolder(View v) {
             super(v);
             v.setOnClickListener(v1 -> {
                 Intent intent = new Intent(v1.getContext(), EditUserActivity.class);
-                intent.putExtra("name", getTextView().getText());
+                intent.putExtra(ARG_PERSON_ID, id);
                 v1.getContext().startActivity(intent);
+
             });
             textView = v.findViewById(R.id.txtUser);
         }
@@ -32,10 +36,19 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         public TextView getTextView() {
             return textView;
         }
+
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String idP) {
+            id = idP;
+        }
     }
 
-    public CustomAdapter(String[] dataSet) {
+    public CustomAdapter(String[] dataSet, String[] dataSetId) {
         mDataSet = dataSet;
+        idDataSet = dataSetId;
     }
 
     @NonNull
@@ -49,15 +62,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
-        Log.d(TAG, "Element " + position + " set.");
-
-        // Get element from your dataset at this position and replace the contents of the view
-        // with that element
         viewHolder.getTextView().setText(mDataSet[position]);
+        viewHolder.setId(idDataSet[position]);
     }
-    // END_INCLUDE(recyclerViewOnBindViewHolder)
 
-    // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
         return mDataSet.length;

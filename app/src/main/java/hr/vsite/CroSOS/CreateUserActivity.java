@@ -1,6 +1,5 @@
 package hr.vsite.CroSOS;
 
-import hr.vsite.myapplication.*;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
@@ -22,6 +21,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import hr.vsite.myapplication.dbHelper;
+
 public class CreateUserActivity extends AppCompatActivity {
 
     private Selection selectionBloodType;
@@ -41,6 +42,8 @@ public class CreateUserActivity extends AppCompatActivity {
         selectionBloodType = new Selection();
         selectionRhFactor = new Selection();
         selectionGender = new Selection();
+        selectionGender.setMySelection(getString(R.string.male));
+
         blood_type_array = getResources().getStringArray(R.array.blood_type_array);
         rh_factor_array = getResources().getStringArray(R.array.rh_factor_array);
 
@@ -51,8 +54,9 @@ public class CreateUserActivity extends AppCompatActivity {
 
         rgGender.setOnCheckedChangeListener((group, checkedId) -> {
             int id = group.getCheckedRadioButtonId();
-            RadioButton rb=findViewById(id);
+            RadioButton rb = findViewById(checkedId);
             selectionGender.setMySelection(rb.getText().toString());
+            String s = selectionGender.getMySelection();
         });
 
         initDatePicker();
@@ -103,7 +107,8 @@ public class CreateUserActivity extends AppCompatActivity {
         spinner.setAdapter(arrayAdapter);
         spinner.setOnItemSelectedListener(spnrBloodTypeOnItemSelectedListener);
     }
-    private AdapterView.OnItemSelectedListener spnrBloodTypeOnItemSelectedListener = new AdapterView.OnItemSelectedListener() {
+
+    private final AdapterView.OnItemSelectedListener spnrBloodTypeOnItemSelectedListener = new AdapterView.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             selectionBloodType.setMySelection(blood_type_array[position]);
@@ -126,7 +131,8 @@ public class CreateUserActivity extends AppCompatActivity {
         spinner.setAdapter(arrayAdapter);
         spinner.setOnItemSelectedListener(spnrRhFacotorOnItemSelectedListener);
     }
-    private AdapterView.OnItemSelectedListener spnrRhFacotorOnItemSelectedListener = new AdapterView.OnItemSelectedListener() {
+
+    private final AdapterView.OnItemSelectedListener spnrRhFacotorOnItemSelectedListener = new AdapterView.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             selectionRhFactor.setMySelection(rh_factor_array[position]);
