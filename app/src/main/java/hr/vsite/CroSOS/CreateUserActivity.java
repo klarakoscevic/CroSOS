@@ -127,12 +127,15 @@ public class CreateUserActivity extends AppCompatActivity {
         String msg;
         if (result == -1) {
             msg = MessageFormat.format(getString(R.string.failed_create_person_msg), fName, lName);
+            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+
         } else {
             msg = MessageFormat.format(getString(R.string.successfully_create_person_msg), fName, lName);
+            Intent intent = new Intent(this, ShowUsersActivity.class);
+            startActivity(intent);
+            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+            finish();
         }
-        Intent intent = new Intent(this, ShowUsersActivity.class);
-        startActivity(intent);
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
-        finish();
+
     }
 }

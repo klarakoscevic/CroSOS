@@ -181,14 +181,16 @@ public class EditUserActivity extends AppCompatActivity {
 
         if (result == -1) {
             msg = MessageFormat.format(getString(R.string.failed_update_person_msg), fName, lName);
+            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
         } else {
             msg = MessageFormat.format(getString(R.string.successfully_update_person_msg), fName, lName);
+            Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(this, ShowUsersActivity.class);
+            startActivity(intent);
+            finish();
+
         }
-
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
-
-        Intent intent = new Intent(this, ShowUsersActivity.class);
-        startActivity(intent);
     }
 
     //region menu
@@ -222,6 +224,8 @@ public class EditUserActivity extends AppCompatActivity {
         }
         Intent intent = new Intent(EditUserActivity.this, ShowUsersActivity.class);
         startActivity(intent);
+        finish();
+
     }
     //endregion
 }

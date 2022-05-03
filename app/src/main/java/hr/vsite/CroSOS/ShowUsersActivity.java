@@ -99,7 +99,7 @@ public class ShowUsersActivity extends AppCompatActivity {
             case R.id.mbtnAddPerson:
                 Intent intent = new Intent(ShowUsersActivity.this, CreateUserActivity.class);
                 startActivity(intent);
-                finish();
+
         }
         return super.onOptionsItemSelected(item);
     }
