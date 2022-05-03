@@ -85,15 +85,21 @@ public class ShowUsersActivity extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.mbtnDeleteAll) {
-            AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-            alertDialog.setTitle(getString(R.string.delete_persons));
-            alertDialog.setMessage(getString(R.string.delete_persons_question));
-            alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.yes),
-                    (dialogInterface, i) -> deleteAllPeople());
-            alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.no),
-                    (dialogInterface, i) -> Toast.makeText(ShowUsersActivity.this, getString(R.string.delete_persons_no), Toast.LENGTH_SHORT).show());
-            alertDialog.show();
+        switch (item.getItemId()){
+            case R.id.mbtnDeleteAll:
+                AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+                alertDialog.setTitle(getString(R.string.delete_persons));
+                alertDialog.setMessage(getString(R.string.delete_persons_question));
+                alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.yes),
+                        (dialogInterface, i) -> deleteAllPeople());
+                alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.no),
+                        (dialogInterface, i) -> Toast.makeText(ShowUsersActivity.this, getString(R.string.delete_persons_no), Toast.LENGTH_SHORT).show());
+                alertDialog.show();
+                break;
+            case R.id.mbtnAddPerson:
+                Intent intent = new Intent(ShowUsersActivity.this, CreateUserActivity.class);
+                startActivity(intent);
+                finish();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -101,8 +107,7 @@ public class ShowUsersActivity extends AppCompatActivity {
     private void deleteAllPeople(){
         db.deleteAllPersons();
         Toast.makeText(this, getString(R.string.successfully_delete_persons_msg), Toast.LENGTH_SHORT).show();
-        finish();
-        startActivity(getIntent());
+        this.recreate();
     }
     //endregion
 }

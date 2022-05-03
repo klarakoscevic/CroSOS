@@ -41,4 +41,5 @@
     <string name="delete_persons_question">Are you sure you want to delete all persons?</string>
     <string name="delete_user_no">User is not deleted</string>
     <string name="delete_persons_no">All persons are not deleted</string>
+    <string name="add_person">Add person</string>
 </resources>
