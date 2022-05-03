@@ -3,9 +3,11 @@ package hr.vsite.CroSOS;
 import android.annotation.SuppressLint;
 import android.database.Cursor;
 import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import hr.vsite.myapplication.dbHelper;
 
 public class ShowUsersActivity extends AppCompatActivity {

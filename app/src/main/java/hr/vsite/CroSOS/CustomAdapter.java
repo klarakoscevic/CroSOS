@@ -3,7 +3,6 @@ package hr.vsite.CroSOS;
 import static hr.vsite.CroSOS.EditUserActivity.ARG_PERSON_ID;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,10 +34,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
         public TextView getTextView() {
             return textView;
-        }
-
-        public String getId() {
-            return id;
         }
 
         public void setId(String idP) {
