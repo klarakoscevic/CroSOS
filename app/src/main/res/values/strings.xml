@@ -42,4 +42,5 @@
     <string name="delete_user_no">User is not deleted</string>
     <string name="delete_persons_no">All persons are not deleted</string>
     <string name="add_person">Add person</string>
+    <string name="none_country">None</string>
 </resources>

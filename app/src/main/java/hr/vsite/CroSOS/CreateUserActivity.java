@@ -3,6 +3,7 @@ package hr.vsite.CroSOS;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -16,14 +17,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 import hr.vsite.myapplication.dbHelper;
 
 public class CreateUserActivity extends AppCompatActivity {
     UserModel userModel;
-
+    List<String> country_array;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +39,10 @@ public class CreateUserActivity extends AppCompatActivity {
         userModel.selectionGender.setMySelection(getString(R.string.male));
         userModel.btnDateOfBirth = findViewById(R.id.btnDateOfBirth);
         userModel.btnDateOfBirth.setText(getTodayDate());
-
         userModel.setBloodTypeArray(getResources().getStringArray(R.array.blood_type_array));
         userModel.setRhFactorArray(getResources().getStringArray(R.array.rh_factor_array));
-
+        country_array = getCountryArray();
+        userModel.setCountryArray(country_array);
         RadioGroup rgGender = findViewById(R.id.rgGender);
 
         rgGender.setOnCheckedChangeListener((group, checkedId) -> {
@@ -49,6 +54,7 @@ public class CreateUserActivity extends AppCompatActivity {
         initDatePicker();
         showSpinnerBloodTypeView();
         showSpinnerRhFactorView();
+        showSpinnerCountryView();
     }
 
     //region datePicker
@@ -86,6 +92,15 @@ public class CreateUserActivity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(userModel.spnrBloodTypeOnItemSelectedListener);
     }
 
+    private void showSpinnerCountryView(){
+        Spinner spinner = findViewById(R.id.spnrCountry);
+        ArrayAdapter<String> countryListAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, country_array);
+        countryListAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(countryListAdapter);
+        spinner.setOnItemSelectedListener(userModel.spnrCountryOnItemSelectedListener);
+    }
+
     private void showSpinnerRhFactorView() {
         Spinner spinner = findViewById(R.id.spnrRhFactor);
         ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(this,
@@ -94,6 +109,20 @@ public class CreateUserActivity extends AppCompatActivity {
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(arrayAdapter);
         spinner.setOnItemSelectedListener(userModel.spnrRhFacotorOnItemSelectedListener);
+    }
+
+    public List<String> getCountryArray(){
+        Locale[] locales = Locale.getAvailableLocales();
+        ArrayList<String> countries = new ArrayList<String>();
+        for (Locale locale : locales) {
+            String country = locale.getDisplayCountry();
+            if (country.trim().length()>0 && !countries.contains(country)) {
+                countries.add(country);
+            }
+        }
+        Collections.sort(countries);
+        countries.add(0,getString(R.string.none_country));
+        return countries;
     }
 
     public void SavePerson(View view) {
@@ -118,7 +147,7 @@ public class CreateUserActivity extends AppCompatActivity {
                 lName,
                 userModel.selectionGender.getMySelection(),
                 userModel.btnDateOfBirth.getText().toString(),
-                "none",
+                userModel.selectionCountry.getMySelection(),
                 userModel.selectionBloodType.getMySelection(),
                 userModel.selectionRhFactor.getMySelection(),
                 allergies.getText().toString(),
