@@ -1,22 +1,28 @@
 package hr.vsite.CroSOS;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.FragmentActivity;
-
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.SearchView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentActivity;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -26,7 +32,6 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -36,19 +41,20 @@ import com.google.android.libraries.places.api.net.PlacesClient;
 import java.io.IOException;
 import java.util.List;
 
-import hr.vsite.CroSOS.databinding.ActivityMapsBinding;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
 
     private static final String TAG = MapsActivity.class.getSimpleName();
+    private static final int REQUEST_CALL = 1;
 
     private GoogleMap mMap;
     private CameraPosition cameraPosition;
-    private ActivityMapsBinding binding;
-    SearchView searchView;
 
     private PlacesClient placesClient;
+    SearchView searchView;
+
+    private boolean searchFlag = false;
 
     private FusedLocationProviderClient fusedLocationProviderClient;
 
@@ -66,28 +72,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private static final String KEY_LOCATION = "location";
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_maps);
+        searchView = findViewById(R.id.sv_location);
 
         if (savedInstanceState != null) {
             lastKnownLocation = savedInstanceState.getParcelable(KEY_LOCATION);
             cameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION);
         }
 
-        binding = ActivityMapsBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-
         Places.initialize(getApplicationContext(), BuildConfig.MAPS_API_KEY);
         placesClient = Places.createClient(this);
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
-        searchView = findViewById(R.id.sv_location);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -131,21 +133,62 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        //getMenuInflater().inflate(R.menu.current_place_menu, menu);
-        return true;
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_map_options, menu);
+        return super.onCreateOptionsMenu(menu);
+
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.search:
+                    if (!searchFlag)
+                        showSearch();
+                    else
+                        hideSearch();
+                    break;
+            case R.id.add:
+                startActivity(new Intent(this, ShowUsersActivity.class));
+                break;
+            case R.id.call:
+                makeACall();
+                break;
+            case R.id.message:
+                sendSMSMessage();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
+    private void makeACall() {
+        Intent phoneIntent = new Intent(Intent.ACTION_CALL);
+        phoneIntent.setData(Uri.parse("tel:112"));
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
+        if(ActivityCompat.checkSelfPermission(MapsActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        startActivity(phoneIntent);
+    }
+
+    protected void sendSMSMessage() {
+        String phoneNumber = "tel:112";
+        String txtMessage;
+    }
+
+    private void showSearch() {
+        searchView = findViewById(R.id.sv_location);
+        searchView.setVisibility(View.VISIBLE);
+        searchView.requestFocus();
+        searchFlag = true;
+    }
+
+    private void hideSearch() {
+        searchView = findViewById(R.id.sv_location);
+        searchView.setVisibility(View.GONE);
+        searchFlag = false;
+    }
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -195,21 +238,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
         }
     }
-
-    public void onRequestPermissionResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        locationPermissionGranted = false;
-        if (requestCode == PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION) {
-            if (grantResults.length > 0
-                && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                locationPermissionGranted = true;
-            }
-        } else {
-            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        }
-        updateLocationUI();
-    }
-
-
 
     @SuppressLint("MissingPermission")
     private void updateLocationUI() {
