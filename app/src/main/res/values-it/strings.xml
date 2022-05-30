@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CroSOS</string>
+    <string name="first_name">Nome di battesimo</string>
+    <string name="last_name">Cognome</string>
+    <string name="country">Paese</string>
+    <string name="gender">Genere biologico</string>
+    <string name="male">Maschio</string>
+    <string name="female">Femmina</string>
+    <string name="blood_type">Gruppo sanguigno</string>
+    <string name="unknown">ignoto</string>
+    <string name="rh_factor">Fattore Rh</string>
+    <string name="medical_conditions">Condizioni mediche</string>
+    <string name="medical_conditions_hint">Condizioni mediche attuali che i servizi di emergenza devono conoscere</string>
+    <string name="date_of_birth">Data di nascita</string>
+    <string name="allergies">Allergie</string>
+    <string name="save">Salva</string>
+    <string name="none_first_name_msg">Inserisci il nome</string>
+    <string name="none_last_name_msg">Inserisci il cognome</string>
+    <string name="failed_create_person_msg">Impossibile aggiungere {0} {1}</string>
+    <string name="successfully_create_person_msg">Aggiunto con successo {0} {1}</string>
+    <string name="failed_update_person_msg">Impossibile aggiornare {0} {1}</string>
+    <string name="successfully_update_person_msg">Impossibile aggiornare {0} {1}</string>
+    <string name="successfully_delete_person_msg">Persona eliminata con successo</string>
+    <string name="successfully_delete_persons_msg">Eliminate tutte le persone con successo</string>
+    <string name="failed_delete_person_msg">Elimina tutte le persone con successo</string>
+    <string name="failed_delete_persons_msg">Impossibile eliminare tutte le persone</string>
+    <string name="blood_typeB">B</string>
+    <string name="blood_typeA">A</string>
+    <string name="blood_typeAB">AB</string>
+    <string name="title_activity_maps">CroSOS</string>
+    <string name="delete">Elimina</string>
+    <string name="delete_all">Cancella tutto</string>
+    <string name="yes">Sì</string>
+    <string name="no">No</string>
+    <string name="delete_user">Elimina persona</string>
+    <string name="delete_persons">Elimina tutte le persone</string>
+    <string name="delete_user_question">Sei sicuro di voler eliminare la persona?</string>
+    <string name="delete_persons_question">Sei sicuro di voler eliminare tutte le persone?</string>
+    <string name="delete_user_no">La persona non viene eliminata</string>
+    <string name="delete_persons_no">Tutte le persone non vengono eliminate</string>
+    <string name="add_person">Tutte le persone non vengono eliminate</string>
+    <string name="none_country">Nessuno</string>
+    <string name="call">Chiamata</string>
+    <string name="message">Messaggio</string>
+</resources>

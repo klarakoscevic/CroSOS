@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CroSOS</string>
+    <string name="first_name">Jméno</string>
+    <string name="last_name">Příjmení</string>
+    <string name="country">Země</string>
+    <string name="gender">Biologické pohlaví</string>
+    <string name="male">Mužský</string>
+    <string name="female">Ženský</string>
+    <string name="blood_type">Krevní skupina</string>
+    <string name="unknown">Neznámý</string>
+    <string name="rh_factor">Rh-faktor</string>
+    <string name="medical_conditions">Zdravotní podmínky</string>
+    <string name="medical_conditions_hint">Aktuální zdravotní stav, který musí záchranná služba znát</string>
+    <string name="date_of_birth">Datum narození</string>
+    <string name="allergies">Alergie</string>
+    <string name="save">Uložit</string>
+    <string name="none_first_name_msg">Zadejte křestní jméno</string>
+    <string name="none_last_name_msg">Zadejte příjmení</string>
+    <string name="failed_create_person_msg">Nepodařilo se přidat {0} {1}</string>
+    <string name="successfully_create_person_msg">Úspěšně přidáno {0} {1}</string>
+    <string name="failed_update_person_msg">Aktualizace {0} {1} se nezdařila</string>
+    <string name="successfully_update_person_msg">Úspěšně aktualizováno {0} {1}</string>
+    <string name="successfully_delete_person_msg">Osoba byla úspěšně smazána</string>
+    <string name="successfully_delete_persons_msg">Všechny osoby byly úspěšně smazány</string>
+    <string name="failed_delete_person_msg">Smazání osoby se nezdařilo</string>
+    <string name="failed_delete_persons_msg">Nepodařilo se odstranit všechny osoby</string>
+    <string name="blood_typeB">B</string>
+    <string name="blood_typeA">A</string>
+    <string name="blood_typeAB">AB</string>
+    <string name="title_activity_maps">CroSOS</string>
+    <string name="delete">Vymazat</string>
+    <string name="delete_all">Smazat všechny</string>
+    <string name="yes">Ano</string>
+    <string name="no">Ano</string>
+    <string name="delete_user">Smazat osobu</string>
+    <string name="delete_persons">Smazat všechny osoby</string>
+    <string name="delete_user_question">Opravdu chcete osobu smazat?</string>
+    <string name="delete_persons_question">Opravdu chcete osobu smazat?</string>
+    <string name="delete_user_no">Osoba není smazána</string>
+    <string name="delete_persons_no">Všechny osoby nejsou smazány</string>
+    <string name="add_person">Přidat osobu</string>
+    <string name="none_country">Žádný</string>
+    <string name="call">Volání</string>
+    <string name="message">Zpráva</string>
+</resources>

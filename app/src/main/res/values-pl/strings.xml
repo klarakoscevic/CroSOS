@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CroSOS</string>
+    <string name="first_name">Imię</string>
+    <string name="last_name">Nazwisko</string>
+    <string name="country">Kraj</string>
+    <string name="gender">Płeć biologiczna</string>
+    <string name="male">Męski</string>
+    <string name="female">Kobieta</string>
+    <string name="blood_type">Grupa krwi</string>
+    <string name="unknown">Nieznany</string>
+    <string name="rh_factor">Współczynnik Rh</string>
+    <string name="medical_conditions">Warunki medyczne</string>
+    <string name="medical_conditions_hint">Aktualne schorzenia, o których muszą wiedzieć służby ratunkowe</string>
+    <string name="date_of_birth">Data urodzenia</string>
+    <string name="allergies">Alergie</string>
+    <string name="save">Ratować</string>
+    <string name="none_first_name_msg">Wprowadź imię</string>
+    <string name="none_last_name_msg">Wpisz nazwisko</string>
+    <string name="failed_create_person_msg">Nie udało się dodać {0} {1}</string>
+    <string name="successfully_create_person_msg">Pomyślnie dodano {0} {1}</string>
+    <string name="failed_update_person_msg">Nie udało się zaktualizować {0} {1}</string>
+    <string name="successfully_update_person_msg">Pomyślnie zaktualizowano {0} {1}</string>
+    <string name="successfully_delete_person_msg">Pomyślnie usunięto osobę</string>
+    <string name="successfully_delete_persons_msg">Pomyślnie usunięto wszystkie osoby</string>
+    <string name="failed_delete_person_msg">Nie udało się usunąć osoby</string>
+    <string name="failed_delete_persons_msg">Nie udało się usunąć wszystkich osób</string>
+    <string name="blood_typeA">A</string>
+    <string name="blood_typeB">B</string>
+    <string name="blood_typeAB">AB</string>
+    <string name="title_activity_maps">CroSOS</string>
+    <string name="delete">Usuwać</string>
+    <string name="delete_all">Usuń wszystko</string>
+    <string name="yes">TAk</string>
+    <string name="no">Nie</string>
+    <string name="delete_user">Usuń osobę</string>
+    <string name="delete_persons">Usuń wszystkie osoby</string>
+    <string name="delete_user_question">Czy na pewno chcesz usunąć tę osobę?</string>
+    <string name="delete_persons_question">Czy na pewno chcesz usunąć wszystkie osoby?</string>
+    <string name="delete_user_no">Użytkownik nie został usunięty</string>
+    <string name="delete_persons_no">Wszystkie osoby nie są usuwane</string>
+    <string name="add_person">Dodaj osobę</string>
+    <string name="none_country">Nic</string>
+    <string name="call">Połączenie</string>
+    <string name="message">Wiadomość</string>
+</resources>
