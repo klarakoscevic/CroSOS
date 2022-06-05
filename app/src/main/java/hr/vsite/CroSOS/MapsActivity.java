@@ -2,11 +2,13 @@ package hr.vsite.CroSOS;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -152,16 +154,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 startActivity(new Intent(this, ShowUsersActivity.class));
                 break;
             case R.id.call:
-                makeACall();
-                break;
-            case R.id.message:
-                sendSMSMessage();
+              //  makeACall();
                 break;
         }
         return super.onOptionsItemSelected(item);
     }
 
-    private void makeACall() {
+    /* private void makeACall() {
         Intent phoneIntent = new Intent(Intent.ACTION_CALL);
         phoneIntent.setData(Uri.parse("tel:112"));
 
@@ -169,12 +168,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             return;
         }
         startActivity(phoneIntent);
-    }
+    } */
 
-    protected void sendSMSMessage() {
-        String phoneNumber = "tel:112";
+ /*   protected void sendSMSMessage() {
+        String phoneNumber = "112";
         String txtMessage;
-    }
+
+        LocationManager locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+
+    } */
 
     private void showSearch() {
         searchView = findViewById(R.id.sv_location);

@@ -8,6 +8,12 @@
         android:title="search"
         app:showAsAction="ifRoom" />
 
+    <item
+        android:id="@+id/call"
+        android:icon="@drawable/ic_call"
+        android:title="call"
+        app:showAsAction="ifRoom" />
+
     <item android:id="@+id/add"
         android:icon="@drawable/ic_addperson"
         android:title="add"
