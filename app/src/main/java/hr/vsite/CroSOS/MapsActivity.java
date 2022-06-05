@@ -2,29 +2,25 @@ package hr.vsite.CroSOS;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
-import android.location.LocationManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.SearchView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -154,10 +150,21 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 startActivity(new Intent(this, ShowUsersActivity.class));
                 break;
             case R.id.call:
-              //  makeACall();
+                openFragmentCall();
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void openFragmentCall() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        CallMessageFragment fragment = new CallMessageFragment();
+        fragmentTransaction.replace(R.id.lytCallMsg, fragment);
+
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 
     /* private void makeACall() {

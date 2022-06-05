@@ -43,4 +43,10 @@
     <string name="none_country">Žádný</string>
     <string name="call">Volání</string>
     <string name="message">Zpráva</string>
+    <string name="emergency_number_call">Zavolejte na nouzové telefonní číslo</string>
+    <string name="ambulance_call">Zavolejte sanitku</string>
+    <string name="police_call">Zavolejte policii</string>
+    <string name="firefighters_call">Zavolejte hasiče</string>
+    <string name="consulate_call">Zavolejte na konzulát</string>
+    <string name="emergency_number_msg">Zašlete zprávu na nouzové telefonní číslo</string>
 </resources>

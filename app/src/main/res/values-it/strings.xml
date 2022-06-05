@@ -43,4 +43,10 @@
     <string name="none_country">Nessuno</string>
     <string name="call">Chiamata</string>
     <string name="message">Messaggio</string>
+    <string name="emergency_number_call">Chiama il numero di emergenza</string>
+    <string name="ambulance_call">Ambulanza</string>
+    <string name="police_call">Chiama la polizia</string>
+    <string name="firefighters_call">Chiama i vigili del fuoco</string>
+    <string name="consulate_call">Chiama il consolato</string>
+    <string name="emergency_number_msg">Invia un messaggio al numero di emergenza</string>
 </resources>

@@ -43,4 +43,10 @@
     <string name="none_country">Nic</string>
     <string name="call">Połączenie</string>
     <string name="message">Wiadomość</string>
+    <string name="emergency_number_call">Zadzwoń pod numer alarmowy</string>
+    <string name="police_call">Wezwać policję</string>
+    <string name="ambulance_call">Zadzwoń po karetkę</string>
+    <string name="firefighters_call">Zadzwoń po strażaków</string>
+    <string name="consulate_call">Zadzwoń do konsulatu</string>
+    <string name="emergency_number_msg">Wyślij alarmowy numer telefonu</string>
 </resources>

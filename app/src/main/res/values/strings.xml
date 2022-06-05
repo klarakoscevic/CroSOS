@@ -45,5 +45,11 @@
     <string name="none_country">None</string>
     <string name="call">Call</string>
     <string name="message">Message</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="emergency_number_msg">Message emergency telephone number</string>
+    <string name="ambulance_call">Call ambulance</string>
+    <string name="police_call">Call police</string>
+    <string name="firefighters_call">Call firefighters</string>
+    <string name="consulate_call">Call consulate</string>
+    <string name="emergency_number_call">Call emergency telephone number</string>
+
 </resources>

@@ -43,4 +43,10 @@
     <string name="none_country">Keiner</string>
     <string name="call">Anruf</string>
     <string name="message">Nachricht</string>
+    <string name="emergency_number_call">Rufen Sie die Notrufnummer an</string>
+    <string name="police_call">Rufen Sie die Polizei</string>
+    <string name="ambulance_call">Rufen Sie den Krankenwagen</string>
+    <string name="firefighters_call">Rufen Sie die Feuerwehr</string>
+    <string name="consulate_call">Rufen Sie das Konsulat an</string>
+    <string name="emergency_number_msg">Nachricht an die Notrufnummer</string>
 </resources>

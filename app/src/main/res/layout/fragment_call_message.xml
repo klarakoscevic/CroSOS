@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".CallMessageFragment">
+
+    <Button
+        android:id="@+id/btnCall112"
+        style="@style/Widget.Material3.Button.IconButton"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:backgroundTint="#2196F3"
+        android:text="@string/emergency_number_call"
+        android:textColor="#000000"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/btnCall194"
+        style="@style/Widget.Material3.Button.IconButton"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:backgroundTint="#2196F3"
+        android:text="@string/ambulance_call"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:iconTint="#B30D0D"
+        app:iconTintMode="src_atop" />
+
+    <Button
+        android:id="@+id/btnCall192"
+        style="@style/Widget.Material3.Button.IconButton"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:backgroundTint="#2196F3"
+        android:text="@string/police_call"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:iconTint="#2C2B2B" />
+
+    <Button
+        android:id="@+id/btnCall193"
+        style="@style/Widget.Material3.Button.IconButton"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:backgroundTint="#2196F3"
+        android:text="@string/firefighters_call"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:iconTint="#2C2B2B" />
+
+    <Button
+        android:id="@+id/btnCallConsulat"
+        style="@style/Widget.Material3.Button.IconButton"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:backgroundTint="#2196F3"
+        android:text="@string/consulate_call"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:iconTint="#2C2B2B" />
+
+    <Button
+        android:id="@+id/btnMsg112"
+        style="@style/Widget.Material3.Button.IconButton"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:backgroundTint="#2196F3"
+        android:text="@string/emergency_number_msg"
+        android:textColor="#000000"
+        android:textSize="20sp" />
+
+</LinearLayout>

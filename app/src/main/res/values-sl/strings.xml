@@ -43,4 +43,10 @@
     <string name="none_country">Nobena</string>
     <string name="call">Pokliči</string>
     <string name="message">Sporočilo</string>
+    <string name="emergency_number_call">Pokličite telefonsko številko za nujne primere</string>
+    <string name="ambulance_call">Pokličite rešilca</string>
+    <string name="police_call">Pokliči policijo</string>
+    <string name="firefighters_call">Pokličite gasilce</string>
+    <string name="consulate_call">Pokličite konzulat</string>
+    <string name="emergency_number_msg">Sporočilo telefonsko številko za nujne primere</string>
 </resources>
