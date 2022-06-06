@@ -17,17 +17,20 @@
         android:theme="@style/Theme.MyApplication">
         <activity
             android:name=".EditUserActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MapsActivity">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MapsActivity" />
+        </activity>
         <activity
             android:name=".ShowUsersActivity"
-            android:exported="true">
-
-            <!--
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter> -->
+            android:exported="false"
+            android:launchMode="singleInstance"
+            android:parentActivityName=".MapsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MapsActivity" />
         </activity>
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
@@ -57,7 +60,11 @@
         </activity>
         <activity
             android:name=".CreateUserActivity"
-            android:exported="true">
+            android:exported="true"
+            android:parentActivityName=".MapsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MapsActivity" />
         </activity>
     </application>
 

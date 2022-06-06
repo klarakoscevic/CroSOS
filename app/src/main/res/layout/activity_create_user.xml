@@ -171,9 +171,4 @@
         android:onClick="SavePerson"
         android:text="@string/save" />
 
-    <CalendarView
-        android:id="@+id/calendarView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
 </LinearLayout>
