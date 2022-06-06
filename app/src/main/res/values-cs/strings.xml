@@ -49,4 +49,5 @@
     <string name="firefighters_call">Zavolejte hasiče</string>
     <string name="consulate_call">Zavolejte na konzulát</string>
     <string name="emergency_number_msg">Zašlete zprávu na nouzové telefonní číslo</string>
+    <string name="sms_sent">SMS odeslána</string>
 </resources>

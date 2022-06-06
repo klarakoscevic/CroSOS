@@ -51,5 +51,6 @@
     <string name="firefighters_call">Call firefighters</string>
     <string name="consulate_call">Call consulate</string>
     <string name="emergency_number_call">Call emergency telephone number</string>
+    <string name="sms_sent">SMS sent</string>
 
 </resources>

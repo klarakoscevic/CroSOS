@@ -49,4 +49,5 @@
     <string name="firefighters_call">Zadzwoń po strażaków</string>
     <string name="consulate_call">Zadzwoń do konsulatu</string>
     <string name="emergency_number_msg">Wyślij alarmowy numer telefonu</string>
+    <string name="sms_sent">SMS wysłany</string>
 </resources>

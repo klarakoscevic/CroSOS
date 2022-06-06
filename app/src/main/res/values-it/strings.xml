@@ -49,4 +49,5 @@
     <string name="firefighters_call">Chiama i vigili del fuoco</string>
     <string name="consulate_call">Chiama il consolato</string>
     <string name="emergency_number_msg">Invia un messaggio al numero di emergenza</string>
+    <string name="sms_sent">SMS inviato</string>
 </resources>

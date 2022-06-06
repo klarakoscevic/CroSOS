@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context=".CallMessageFragment">
 
@@ -11,7 +11,7 @@
         android:id="@+id/btnCall112"
         style="@style/Widget.Material3.Button.IconButton"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="70dp"
         android:backgroundTint="#2196F3"
         android:text="@string/emergency_number_call"
         android:textColor="#000000"
@@ -21,7 +21,7 @@
         android:id="@+id/btnCall194"
         style="@style/Widget.Material3.Button.IconButton"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="70dp"
         android:backgroundTint="#2196F3"
         android:text="@string/ambulance_call"
         android:textColor="#000000"
@@ -33,7 +33,7 @@
         android:id="@+id/btnCall192"
         style="@style/Widget.Material3.Button.IconButton"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="70dp"
         android:backgroundTint="#2196F3"
         android:text="@string/police_call"
         android:textColor="#000000"
@@ -44,7 +44,7 @@
         android:id="@+id/btnCall193"
         style="@style/Widget.Material3.Button.IconButton"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="70dp"
         android:backgroundTint="#2196F3"
         android:text="@string/firefighters_call"
         android:textColor="#000000"
@@ -55,21 +55,140 @@
         android:id="@+id/btnCallConsulat"
         style="@style/Widget.Material3.Button.IconButton"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="70dp"
         android:backgroundTint="#2196F3"
         android:text="@string/consulate_call"
         android:textColor="#000000"
         android:textSize="20sp"
         app:iconTint="#2C2B2B" />
 
-    <Button
-        android:id="@+id/btnMsg112"
-        style="@style/Widget.Material3.Button.IconButton"
+    <TextView
+        android:id="@+id/textView2"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:backgroundTint="#2196F3"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:background="#2196F3"
+        android:gravity="center"
         android:text="@string/emergency_number_msg"
         android:textColor="#000000"
         android:textSize="20sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/btnMsgPerson1"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:backgroundTint="#2196F3"
+            android:clickable="true"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/btnMsgPerson2"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:backgroundTint="#2196F3"
+            android:clickable="true"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/btnMsgPerson3"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:backgroundTint="#2196F3"
+            android:clickable="true"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/btnMsgPerson4"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:backgroundTint="#2196F3"
+            android:clickable="true"
+            android:maxWidth="200dp"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/btnMsgPerson5"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:backgroundTint="#2196F3"
+            android:clickable="true"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/btnMsgPerson6"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:backgroundTint="#2196F3"
+            android:clickable="true"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/btnMsgPerson7"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:backgroundTint="#2196F3"
+            android:clickable="true"
+            android:maxLines="2"
+            android:minWidth="200dp"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/btnMsgPerson8"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:backgroundTint="#2196F3"
+            android:clickable="true"
+            android:minWidth="200dp"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+    </LinearLayout>
+
 
 </LinearLayout>

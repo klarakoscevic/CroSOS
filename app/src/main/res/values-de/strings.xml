@@ -49,4 +49,5 @@
     <string name="firefighters_call">Rufen Sie die Feuerwehr</string>
     <string name="consulate_call">Rufen Sie das Konsulat an</string>
     <string name="emergency_number_msg">Nachricht an die Notrufnummer</string>
+    <string name="sms_sent">SMS gesendet</string>
 </resources>
