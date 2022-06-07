@@ -232,6 +232,7 @@ public class CallMessageFragment extends Fragment implements View.OnClickListene
         String bloodType = "";
         String rhFactor = "";
         String dateOfBirth = "";
+        String country ="";
 
         if (user.moveToFirst()) {
             firstName = user.getString(user.getColumnIndex("person_name"));
@@ -242,11 +243,12 @@ public class CallMessageFragment extends Fragment implements View.OnClickListene
             bloodType = user.getString(user.getColumnIndex("person_blood_type"));
             rhFactor = user.getString(user.getColumnIndex("person_rh_factor"));
             dateOfBirth = user.getString(user.getColumnIndex("person_date_of_birth"));
+            country= user.getString(user.getColumnIndex("person_country"));
         }
         user.close();
 
         msg = firstName + " " + lastName +
-                "\nDatum rođenja: " + dateOfBirth; //treba dodati plus akon lokacije
+                "\nDatum rođenja: " + dateOfBirth; //Treba dodati plus nakon lokacije
         //"Lokacija: " +
 
         if (gender.equals(getString(R.string.male))) {
@@ -267,6 +269,9 @@ public class CallMessageFragment extends Fragment implements View.OnClickListene
             msg += "\nKrvna grupa: " + bloodType + " " + rhFactor;
         } else if (!bloodType.equals(getString(R.string.unknown))) {
             msg += "\nKrvna grupa: " + bloodType;
+        }
+        if(!country.equals("None")){
+            msg +="\nDržava: " + country;
         }
 
     }

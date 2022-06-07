@@ -21,16 +21,23 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.lang.reflect.Array;
 import java.text.MessageFormat;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 import hr.vsite.myapplication.dbHelper;
 
 public class EditUserActivity extends AppCompatActivity {
     public static final String ARG_PERSON_ID = "_id_person";
     UserModel userModel;
+    List<String> country_array;
+    private String initialCountry;
 
     private Date d;
     private RadioGroup rgGender;
@@ -55,6 +62,8 @@ public class EditUserActivity extends AppCompatActivity {
         userModel.setBloodTypeArray(getResources().getStringArray(R.array.blood_type_array));
         userModel.setRhFactorArray(getResources().getStringArray(R.array.rh_factor_array));
         userModel.btnDateOfBirth = findViewById(R.id.btnDateOfBirth);
+        country_array = getCountryArray();
+        userModel.setCountryArray(country_array);
 
         firstName = findViewById(R.id.txtFirstName);
         lastName = findViewById(R.id.txtLastName);
@@ -69,6 +78,8 @@ public class EditUserActivity extends AppCompatActivity {
         });
 
         getPerson();
+        showSpinnerCountryView();
+
     }
 
     @SuppressLint("Range")
@@ -84,6 +95,7 @@ public class EditUserActivity extends AppCompatActivity {
             userModel.selectionGender.setMySelection(user.getString(user.getColumnIndex("person_gender")));
             userModel.selectionBloodType.setMySelection(user.getString(user.getColumnIndex("person_blood_type")));
             userModel.selectionRhFactor.setMySelection(user.getString(user.getColumnIndex("person_rh_factor")));
+            initialCountry=user.getString(user.getColumnIndex("person_country"));
             dateOfBirth = user.getString(user.getColumnIndex("person_date_of_birth"));
         }
         user.close();
@@ -104,7 +116,19 @@ public class EditUserActivity extends AppCompatActivity {
         showSpinnerRhFactorView();
         initDatePicker();
     }
-
+    public List<String> getCountryArray(){
+        Locale[] locales = Locale.getAvailableLocales();
+        ArrayList<String> countries = new ArrayList<String>();
+        for (Locale locale : locales) {
+            String country = locale.getDisplayCountry();
+            if (country.trim().length()>0 && !countries.contains(country)) {
+                countries.add(country);
+            }
+        }
+        Collections.sort(countries);
+        countries.add(0,getString(R.string.none_country));
+        return countries;
+    }
     private void showSpinnerBloodTypeView() {
         Spinner spinner = findViewById(R.id.spnrBloodType);
         ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(this,
@@ -126,7 +150,17 @@ public class EditUserActivity extends AppCompatActivity {
         spinner.setSelection(getIndex(spinner, userModel.selectionRhFactor.getMySelection()));
         spinner.setOnItemSelectedListener(userModel.spnrRhFacotorOnItemSelectedListener);
     }
-
+    private void showSpinnerCountryView(){
+        Spinner spinner = findViewById(R.id.spnrCountry);
+        ArrayAdapter<String> countryListAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, country_array);
+        countryListAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(countryListAdapter);
+        spinner.setOnItemSelectedListener(userModel.spnrCountryOnItemSelectedListener);
+        ArrayAdapter testAdapter=(ArrayAdapter) spinner.getAdapter();
+        int spinnerPosition=testAdapter.getPosition(initialCountry);
+        spinner.setSelection(spinnerPosition);
+    }
     //region datePicker
 
     private void initDatePicker() {
@@ -171,7 +205,7 @@ public class EditUserActivity extends AppCompatActivity {
                 lName,
                 userModel.selectionGender.getMySelection(),
                 userModel.btnDateOfBirth.getText().toString(),
-                "none",
+                userModel.selectionCountry.getMySelection(),
                 userModel.selectionBloodType.getMySelection(),
                 userModel.selectionRhFactor.getMySelection(),
                 allergies.getText().toString(),
