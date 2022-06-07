@@ -30,7 +30,7 @@
     <string name="successfully_delete_persons_msg">Successfully deleted all persons</string>
     <string name="failed_delete_person_msg">Eliminate tutte le persone con successo</string>
     <string name="failed_delete_persons_msg">Failed to delete all persons</string>
-    <string name="title_activity_maps">CroSOS</string>
+    <string name="title_activity_maps">CroSOSs</string>
     <string name="delete">Delete</string>
     <string name="delete_all">Delete all</string>
     <string name="yes">Yes</string>
