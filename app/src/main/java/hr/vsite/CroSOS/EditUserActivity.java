@@ -157,8 +157,8 @@ public class EditUserActivity extends AppCompatActivity {
         countryListAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(countryListAdapter);
         spinner.setOnItemSelectedListener(userModel.spnrCountryOnItemSelectedListener);
-        ArrayAdapter testAdapter=(ArrayAdapter) spinner.getAdapter();
-        int spinnerPosition=testAdapter.getPosition(initialCountry);
+        ArrayAdapter countrySpinnerAdapter=(ArrayAdapter) spinner.getAdapter();
+        int spinnerPosition=countrySpinnerAdapter.getPosition(initialCountry);
         spinner.setSelection(spinnerPosition);
     }
     //region datePicker
